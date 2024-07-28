@@ -1,0 +1,27 @@
+\documentclass[french]{article}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage[useregional=text]{datetime2}
+\usepackage{geometry}
+\usepackage{Style}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\setlength{\droptitle}{-2cm}
+
+\geometry{
+    a4paper,
+    left=15mm,
+    right=15mm,
+    bottom = 25mm,
+    top=20mm
+}
+
+\fancyhf{}
+\lhead{\thepage}
+%\chead{\thetitle}
+\chead{\makebox[\textwidth][c]{\MakeUppercase{\thetitle}}}
+\rhead{\makebox[\textwidth][r]{\tiny\thedate{}}}
+%\rhead{\thedate}

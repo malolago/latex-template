@@ -1,0 +1,141 @@
+\RequirePackage{lipsum}
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+
+\RequirePackage{hyperref}
+\RequirePackage{fancyhdr}
+\RequirePackage{fncychap}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{amsthm}
+\RequirePackage{titling}
+
+\RequirePackage{varwidth}
+\RequirePackage{xifthen}
+
+\definecolor{Violet-garayt}{HTML}{4c00b2}
+\definecolor{bleu-garayt-1}{HTML}{0000ff}
+\definecolor{bleu-garayt-2}{HTML}{0080ff}
+\definecolor{bleu-garayt-3}{HTML}{00b9f2}
+\definecolor{bleu-garayt-4}{HTML}{000040}
+\definecolor{vert-garayt}{HTML}{003300}
+
+
+\newtcbtheorem[number within=section]{theoreme}{Théorème}{skin=enhanced jigsaw, interior hidden,
+colframe=red,coltitle=red!50!black, separator sign dash,
+fonttitle=\bfseries,
+attach boxed title to top left={xshift=11.25mm, yshift=-1.25mm},
+boxed title style= {size=tight, empty,boxrule=0.5mm},
+varwidth boxed title=0.5\linewidth,
+underlay boxed title={
+\path[draw=red,bottom color=white,top color=red!50!white,line width=0.5mm]
+([xshift=-\tcboxedtitleheight*2]title.south west)
+cos +(\tcboxedtitleheight,\tcboxedtitleheight/2)
+sin +(\tcboxedtitleheight,\tcboxedtitleheight/2)
+-- (title.north west)
+-- (title.north east)
+cos +(\tcboxedtitleheight,-\tcboxedtitleheight/2)
+sin +(\tcboxedtitleheight,-\tcboxedtitleheight/2); }}{thm}
+
+\newtcbtheorem[number within=section]{propriete}{Propriété}{skin=enhanced jigsaw, interior hidden,
+colframe=Violet-garayt,coltitle=Violet-garayt!50!black, separator sign dash,
+fonttitle=\bfseries,
+attach boxed title to top left={xshift=11.25mm, yshift=-1.25mm},
+boxed title style= {size=tight, empty,boxrule=0.5mm},
+varwidth boxed title=0.5\linewidth,
+underlay boxed title={
+\path[draw=Violet-garayt,bottom color=white,top color=Violet-garayt!50!white,line width=0.5mm]
+([xshift=-\tcboxedtitleheight*2]title.south west)
+cos +(\tcboxedtitleheight,\tcboxedtitleheight/2)
+sin +(\tcboxedtitleheight,\tcboxedtitleheight/2)
+-- (title.north west)
+-- (title.north east)
+cos +(\tcboxedtitleheight,-\tcboxedtitleheight/2)
+sin +(\tcboxedtitleheight,-\tcboxedtitleheight/2); }}{prop}
+
+
+\newtcolorbox{warning}[1][]{enhanced,
+  before skip balanced=2mm,after skip balanced=3mm,
+  boxrule=0.4pt,left=5mm,right=2mm,top=1mm,bottom=1mm,
+  colback=yellow!50,
+  colframe=yellow!20!black,
+  sharp corners,rounded corners=southeast,arc is angular,arc=3mm,
+  underlay={%
+    \path[fill=tcbcolback!80!black] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+    \path[draw=tcbcolframe,shorten <=-0.05mm,shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+    \path[fill=yellow!50!black,draw=none] (interior.south west) rectangle node[white]{\Huge\bfseries !} ([xshift=4mm]interior.north west);
+    },
+drop fuzzy shadow,#1}
+
+
+\makeatletter
+\newenvironment{_preuve}{\par
+\pushQED{\qed}%
+\normalfont \topsep6\p@\@plus6\p@\relax
+\trivlist
+\item\relax
+{\bfseries
+\textcolor{bleu-garayt-4}{Démonstration\@addpunct{.}}}\hspace\labelsep\ignorespaces \medskip \\
+}{%
+\popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+\newenvironment{preuve}{
+\begin{tcolorbox}[enhanced,skin=enhancedmiddle,
+    frame hidden,interior hidden,top=0mm,bottom=0mm,boxsep=0mm,
+    borderline={0.75mm}{0mm}{bleu-garayt-1},
+    borderline={0.75mm}{0.75mm}{bleu-garayt-2},
+    borderline={0.75mm}{1.5mm}{bleu-garayt-3}, ]
+    \begin{_preuve}
+}{
+    \end{_preuve}
+\end{tcolorbox}
+}
+
+\newcommand*{\exemple}[3]{
+    \ifthenelse{
+        \isempty{#3}
+    }{
+        \begin{tcolorbox}[
+            enhanced,colframe=green!20!black,colback=yellow!10!white,coltitle=white,
+            fonttitle=\bfseries,
+            underlay={\begin{tcbclipinterior}
+            \shade[inner color=green!80!yellow,outer color=yellow!10!white]
+            (interior.north west) circle (2cm);
+            \shade[inner color=red!80!yellow,outer color=red!2!white]
+            (interior.south east) circle (2cm);
+            \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}]
+            (interior.south west) grid (interior.north east);
+            \end{tcbclipinterior}},
+            title=Exemple - #1,
+            title style = {color=vert-garayt}
+        ]
+        #2
+        \end{tcolorbox}
+    }{
+        \begin{tcolorbox}[
+        enhanced,colframe=green!20!black,colback=yellow!10!white,coltitle=white,
+        fonttitle=\bfseries,
+        underlay={\begin{tcbclipinterior}
+        \shade[inner color=green!80!yellow,outer color=yellow!10!white]
+        (interior.north west) circle (2cm);
+        \shade[inner color=red!80!yellow,outer color=red!2!white]
+        (interior.south east) circle (2cm);
+        \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}]
+        (interior.south west) grid (interior.north east);
+        \end{tcbclipinterior}},
+        title=Exemple - #1,
+        title style = {color=vert-garayt}
+    ]
+    #2
+    \tcblower
+    #3
+    \end{tcolorbox}
+    }
+}
+
+
+\newcommand{\university}[1]{
+    \date{\thedate}
+    \lfoot{\tiny{\theauthor, #1}}
+}
