@@ -1,5 +1,6 @@
 \RequirePackage{amsmath, amssymb, amsthm}
 \RequirePackage{xparse}
+\RequirePackage{mathrsfs}
 
 \ExplSyntaxOn
 \DeclareExpandableDocumentCommand{\IfNoValueOrEmptyTF}{mmm}
@@ -46,7 +47,7 @@
 \NewDocumentCommand{\Mat}{o}{
     \cal{M}_{\IfValueT{#1}{#1}}(\K)
 }
-\NewDocumentCommand{\MatBf}{O{\mathcal{B}} m}{
+\NewDocumentCommand{\MatBf}{O{\mathscr{B}} m}{
     \text{Mat}_{#1}(#2)
 }
 
@@ -75,4 +76,4 @@
         \vec{x}_{n}
     \end{pmatrix}
 }
-\NewDocumentCommand{\App}{O{E} o}{\mathcal{L}\IfValueT{#2}{_{#2}}(#1)}
+\NewDocumentCommand{\App}{O{E} o}{\mathscr{L}\IfValueT{#2}{_{#2}}(#1)}
