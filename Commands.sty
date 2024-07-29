@@ -1,0 +1,78 @@
+\RequirePackage{amsmath, amssymb, amsthm}
+\RequirePackage{xparse}
+
+\ExplSyntaxOn
+\DeclareExpandableDocumentCommand{\IfNoValueOrEmptyTF}{mmm}
+ {
+  \IfNoValueTF{#1}{#2}
+   {
+    \tl_if_empty:nTF {#1} {#2} {#3}
+   }
+ }
+\ExplSyntaxOff
+
+\newcommand{\ds}{\displaystyle}
+
+\newcommand{\Real}[1]{\mathfrak{Re}\left({#1}\right)}
+\newcommand{\Imag}[1]{\mathfrak{Im}\left({#1}\right)}
+\renewcommand{\Im}[1]{\text{Im}\left({#1}\right)}
+\newcommand{\Ker}[1]{\text{Ker}\left({#1}\right)}
+
+\newcommand{\bb}[1]{\mathbb{#1}}
+\renewcommand{\cal}[1]{\mathcal{#1}}
+\renewcommand{\t}[1]{\text{#1}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\NewDocumentCommand{\PolyC}{o}{%
+  \C_{\IfValueT{#1}{#1}}[X]%
+}
+\NewDocumentCommand{\PolyR}{o}{%
+  \R_{\IfValueT{#1}{#1}}[X]%
+}
+\NewDocumentCommand{\Poly}{o}{%
+  \K_{\IfValueT{#1}{#1}}[X]%
+}
+\NewDocumentCommand{\MatC}{o}{
+    \cal{M}_{\IfValueT{#1}{#1}}(\C)
+}
+\NewDocumentCommand{\MatR}{o}{
+    \cal{M}_{\IfValueT{#1}{#1}}(\R)
+}
+\NewDocumentCommand{\Mat}{o}{
+    \cal{M}_{\IfValueT{#1}{#1}}(\K)
+}
+\NewDocumentCommand{\MatBf}{O{\mathcal{B}} m}{
+    \text{Mat}_{#1}(#2)
+}
+
+\NewDocumentCommand{\Serie}{O{k} O{0} O{+\infty} O{=} m}{\sum_{#1#4#2}^{#3}{#5}}
+\NewDocumentCommand{\Int}{O{0} O{x} m}{\int_{#1}^{+\infty}#3\text{d#2}}
+\NewDocumentCommand{\Lim}{O{x} O{+\infty} m}{\lim_{#1 \to #2}#3}
+\NewDocumentCommand{\Prod}{O{k} O{0} O{+\infty} O{=} m}{\sum_{#1#4#2}^{#3}{#5}}
+
+
+
+\NewDocumentCommand{\diff}{O{x} o m}{
+    \IfNoValueOrEmptyTF{#2}{
+        \frac{\partial {#3}}{\partial {#1}}
+    }{
+        \frac{\partial \left({#3}\right)^{#2}}{\partial {#1}^{#2}}
+    }
+}
+
+\newcommand{\lvec}{
+    \left(\vec{x_1}\dots\vec{x_n}\right)
+}
+\newcommand{\cvec}{
+    \begin{pmatrix}
+        \vec{x}_{1} \\
+        \vdots \\
+        \vec{x}_{n}
+    \end{pmatrix}
+}
+\NewDocumentCommand{\App}{O{E} o}{\mathcal{L}\IfValueT{#2}{_{#2}}(#1)}
