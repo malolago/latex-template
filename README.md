@@ -31,3 +31,14 @@ and
 \usepackage{Commands}
 ```
 (for custom commands)
+
+## To see examples
+
+Use 
+```git
+git checkout Examples
+``` 
+undo with
+```git
+git checkout main
+```
