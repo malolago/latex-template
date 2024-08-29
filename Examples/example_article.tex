@@ -1,0 +1,178 @@
+\documentclass[french]{article}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage[useregional=text]{datetime2}
+\usepackage{geometry}
+\usepackage{Style}
+\usepackage{Commands}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage{lipsum}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+
+\setlength{\droptitle}{-2cm}
+
+\geometry{
+    a4paper,
+    left=15mm,
+    right=15mm,
+    bottom = 25mm,
+    top=20mm
+}
+
+\fancyhf{}
+\lhead{\thepage}
+%\chead{\thetitle}
+\chead{\makebox[\textwidth][c]{\MakeUppercase{\thetitle}}}
+\rhead{\makebox[\textwidth][r]{\tiny\thedate{}}}
+%\rhead{\thedate}
+
+
+
+\title{Title}
+\date{\today{}}
+\author{Author}
+\university{University}
+
+\begin{document}
+\maketitle
+    \section{Geometry}
+    \lipsum[0-3]
+
+    \section{Boxes}
+
+    \subsection{Théorème}
+    
+    \begin{verbatim}
+    \begin{theoreme}{Title}{reference}
+        Text
+    \end{theoreme}
+    \end{verbatim}
+
+    \begin{theoreme}{Title}{reference}
+        Text
+    \end{theoreme}
+
+    Can be referred with 
+    \begin{verbatim} 
+        \ref{thm:reference}
+    \end{verbatim}
+
+    \subsection{Propriété}
+    \begin{verbatim}
+        \begin{propriete}{Title}{reference}
+            Text
+        \end{propriete}
+    \end{verbatim}
+
+    \begin{propriete}{Title}{reference}
+        Text
+    \end{propriete}
+
+    Can be referred with 
+    \begin{verbatim} 
+        \ref{prop:reference}
+    \end{verbatim}
+
+    \subsection{Warning}
+
+    \begin{verbatim}
+        \begin{warning}
+            Text
+        \end{warning}
+    \end{verbatim}
+
+    \begin{warning}
+        Text
+    \end{warning}
+
+    \subsection{Preuve}
+
+    \begin{verbatim}
+        \begin{preuve}
+            Text
+        \end{preuve}
+    \end{verbatim}
+
+    \begin{preuve}
+        Text
+    \end{preuve}
+
+    \subsection{Exemple}
+    
+
+    \begin{verbatim}
+        \exemple{Title}{Text}{Solution}
+    \end{verbatim}
+
+    \exemple{Title}{Text}{Solution}
+
+    \begin{warning}
+        Solution can be empty.
+    \end{warning}
+    
+    \begin{verbatim}
+        \exemple{Title}{Text}{}
+    \end{verbatim}
+
+    \exemple{Title}{Text}{}
+
+\section{Commands}
+
+\begin{tabular}{|c|c|c|}
+    \hline
+    \verb$\Real{Expr}$ & $\Real{Expr}$ & Real part of \verb|Expr| \\
+    \verb$\Imag{Expr}$& $\Imag{Expr}$  & Imaginary part of \verb|Expr|\\
+    \hline
+    \verb$\Im{Expr}$ & $\Im{Expr}$ & Image of \verb|Expr| \\ 
+    \verb$\Ker{Expr}$ & $\Ker{Expr}$ & Kernel of \verb|Expr| \\
+    \hline
+    \verb|$\R$| & $\R$ & Real \\
+    \verb|$\C$| & $\C$ & Complex \\
+    \verb|$\K$| & $\K$ & K \\
+    \verb|$\N$| & $\N$ & Naturals \\
+    \verb|$\Z$| & $\Z$ & Relatives \\
+    \hline
+    \verb$\PolyC$ & $\PolyC$ & Complex Polynom \\ 
+    \verb$\PolyC[deg]$ & $\PolyC[2]$ & Complex Polynom (deg inferior to deg) \\
+    \verb$\PolyR$ & $\PolyR$ & Real Polynom \\ 
+    \verb$\PolyR[deg]$ & $\PolyR[2]$ & Real Polynom (deg inferior to deg) \\
+    \verb$\Poly$ & $\Poly$ & $\K$ Polynom \\ 
+    \verb$\Poly[deg]$ & $\Poly[2]$ & $\K$ Polynom (deg inferior to deg) \\
+    \hline
+    \verb$\MatC$ & $\MatC$ & Complex matrix \\ 
+    \verb$\MatC[deg]$ & $\MatC[2]$ & Complex matrix (deg inferior to deg) \\
+    \verb$\MatR$ & $\MatR$ & Real matrix \\ 
+    \verb$\MatR[deg]$ & $\MatR[2]$ & Real matrix (deg inferior to deg) \\
+    \verb$\Mat$ & $\Mat$ & $\K$ matrix \\ 
+    \verb$\Mat[deg]$ & $\Mat[2]$ & $\K$ matrix (deg inferior to deg) \\
+    \hline
+    \verb$\Matbf{f}$ & $\MatBf{f}$ & \\
+    \verb$\Matbf[\N]{f}$ & $\MatBf[\N]{f}$ & \\
+    \hline
+    \verb|$\Serie[var][start]{Expr}$| & $\Serie[var][start]{Expr}$ & (default: var=k, start=0)\\
+    \verb|$\Int[start][var]{Expr}$| & $\Int[start][var]{Expr}$ & (default: start=0, var=x)\\
+    \verb|$\Lim[var][to]{Expr}$| & $\Lim[var][to]{Expr}$ & (default: var=x, to=$+\infty$)\\
+    \verb|$\diff[var][order]{Expr}$| & $\diff[var][order]{Expr}$ & (default: var=x, order=$\emptyset$)\\
+    \verb|$\diff[var]{Expr}$| & $\diff[var]{Expr}$ & \\
+    \hline
+    \verb|$\lvec$| & $\lvec$ & \\
+    \verb|$\cvec$| & $\cvec$ & \\
+    \hline
+    \verb|$\App[Space][Expr]$| & $\App[Space][Expr]$ & (default: Space=E, Expr=$\emptyset$) \\
+    \hline
+\end{tabular}
+
+\section{Aliases}
+
+\begin{tabular}{|c|c|}
+    \hline
+    \verb|\ds| & \verb|\displaystyle| \\
+    \verb|\bb{}| & \verb|\mathbb{}| \\
+    \verb|\cal{}| & \verb|\mathcal{}| \\
+    \verb|\t{}| & \verb|\text{}| \\
+    \hline
+\end{tabular}
+
+\end{document}
