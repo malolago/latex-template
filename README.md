@@ -1,44 +1,11 @@
 # README
 
 ## To use
-Copy and paste the following cmd in the directory:
+Copy and paste the following cmd in the directory you want to paste the template to (works only with Powershell):
 ```powershell
-git clone https://github.com/malolago/latex-template.git .
+curl https://github.com/malolago/latex-template/archive/main.zip -o output.zip | tar -xf output.zip; mv .\latex-template-main\* ./; rm -r latex-template-main; rm output.zip
 ```
 
-## To include in your project
+Then, just go [here](./template_article.tex), write Title, date, author and university and replace ... with whatever you want!
 
-### With header
-Just use 
-```latex
-\input{Template}
-```
-at the beggining of your file, then 
-```latex
-\begin{document}
-...
-\end{document}
-```
-
-### Without header
-Use
-```latex
-\usepackage{Style}
-```
-(for boxes)
-and
-```latex
-\usepackage{Commands}
-```
-(for custom commands)
-
-## To see examples
-
-Use 
-```git
-git checkout Examples
-``` 
-undo with
-```git
-git checkout main
-```
+Enjoy!
