@@ -3,8 +3,8 @@
 \usepackage{babel}
 \usepackage[useregional=text]{datetime2}
 \usepackage{geometry}
-\usepackage{Style}
-\usepackage{Commands}
+\usepackage{../Style}
+\usepackage{../Commands}
 \usepackage{fancyhdr}
 \usepackage{titling}
 \usepackage{lipsum}
@@ -73,6 +73,22 @@
     Can be referred with 
     \begin{verbatim} 
         \ref{prop:reference}
+    \end{verbatim}
+
+    \subsection{Définition}
+    \begin{verbatim}
+        \begin{definition}{Title}{reference}
+            Text
+        \end{definition}
+    \end{verbatim}
+
+    \begin{definition}{Title}{reference}
+        Text
+    \end{definition}
+
+    Can be referred with 
+    \begin{verbatim} 
+        \ref{def:reference}
     \end{verbatim}
 
     \subsection{Warning}

@@ -20,6 +20,12 @@
 \definecolor{vert-garayt}{HTML}{003300}
 
 
+\newenvironment{p}[1][1em]{
+    \begin{hangparas}{#1}{1}
+}{
+    \end{hangparas}
+}
+
 \newtcbtheorem[number within=section]{theoreme}{Théorème}{skin=enhanced jigsaw, interior hidden,
 colframe=red,coltitle=red!50!black, separator sign dash,
 fonttitle=\bfseries,
@@ -51,6 +57,22 @@ sin +(\tcboxedtitleheight,\tcboxedtitleheight/2)
 -- (title.north east)
 cos +(\tcboxedtitleheight,-\tcboxedtitleheight/2)
 sin +(\tcboxedtitleheight,-\tcboxedtitleheight/2); }}{prop}
+
+\newtcbtheorem[number within=section]{definition}{Définition}{skin=enhanced jigsaw, interior hidden,
+colframe=blue,coltitle=blue!50!black, separator sign dash,
+fonttitle=\bfseries,
+attach boxed title to top left={xshift=11.25mm, yshift=-1.25mm},
+boxed title style= {size=tight, empty,boxrule=0.5mm},
+varwidth boxed title=0.5\linewidth,
+underlay boxed title={
+\path[draw=blue,bottom color=white,top color=blue!50!white,line width=0.5mm]
+([xshift=-\tcboxedtitleheight*2]title.south west)
+cos +(\tcboxedtitleheight,\tcboxedtitleheight/2)
+sin +(\tcboxedtitleheight,\tcboxedtitleheight/2)
+-- (title.north west)
+-- (title.north east)
+cos +(\tcboxedtitleheight,-\tcboxedtitleheight/2)
+sin +(\tcboxedtitleheight,-\tcboxedtitleheight/2); }}{def}
 
 
 \newtcolorbox{warning}[1][]{enhanced,
@@ -138,10 +160,4 @@ drop fuzzy shadow,#1}
 \newcommand{\university}[1]{
     \date{\thedate}
     \lfoot{\tiny{\theauthor, #1}}
-}
-
-\newenvironment{p}[1][1em]{
-    \begin{hangparas}{#1}{1}
-}{
-    \end{hangparas}
 }
