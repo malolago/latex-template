@@ -8,6 +8,7 @@
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{amsthm}
 \RequirePackage{titling}
+\RequirePackage{hanging}
 
 \RequirePackage{varwidth}
 \RequirePackage{xifthen}
@@ -74,6 +75,21 @@ sin +(\tcboxedtitleheight,\tcboxedtitleheight/2)
 cos +(\tcboxedtitleheight,-\tcboxedtitleheight/2)
 sin +(\tcboxedtitleheight,-\tcboxedtitleheight/2); }}{def}
 
+
+\newtcolorbox{uexemple}{
+    skin=enhanced,colframe=green!20!black,colback=yellow!10!white,coltitle=white,
+    fonttitle=\bfseries,
+    underlay={\begin{tcbclipinterior}
+    \shade[inner color=green!80!yellow,outer color=yellow!10!white]
+    (interior.north west) circle (2cm);
+    \shade[inner color=red!80!yellow,outer color=red!2!white]
+    (interior.south east) circle (2cm);
+    \draw[help lines,step=5mm,yellow!80!black,shift={(interior.north west)}]
+    (interior.south west) grid (interior.north east);
+    \end{tcbclipinterior}},
+    title=Exemple,
+    title style = {color=vert-garayt}
+}
 
 \newtcolorbox{warning}[1][]{enhanced,
   before skip balanced=2mm,after skip balanced=3mm,
