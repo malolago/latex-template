@@ -139,3 +139,9 @@ drop fuzzy shadow,#1}
     \date{\thedate}
     \lfoot{\tiny{\theauthor, #1}}
 }
+
+\newenvironment{p}[1][1em]{
+    \begin{hangparas}{#1}{1}
+}{
+    \end{hangparas}
+}
